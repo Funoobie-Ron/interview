@@ -4,7 +4,6 @@ const config = require('../config/config');
 exports.authenticate = (req, res, next) => {
   // Extract token from header
   const token = req.header('Authorization');
-
   // Check if token is present
   if (!token) {
     return res.status(401).json({ message: 'Authorization denied, token not provided' });

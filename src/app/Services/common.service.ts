@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -41,11 +41,49 @@ export class CommonService {
       );
   }
 
+  currentuser(): Observable<any> {
+    console.log('current');
+
+    // Retrieve the token from wherever it's stored (e.g., localStorage)
+    const token = localStorage.getItem('token');
+
+    // Ensure token exists
+    if (!token) {
+      // Handle case where token is missing (e.g., redirect to login)
+      return throwError('Token is missing');
+    }
+
+    // Construct request headers with the token
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    // Make the HTTP request with the token included in the headers
+    return this.http.get<any>(`${this.baseUrl}/api/currentuser`, { headers })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   // Function to perform HTTP PUT request to edit a user
   editUser(userId: string, userData: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}api/users/${userId}`, userData)
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  setToken(token: string): void {
+    localStorage.setItem('token', token);
+  }
+
+  remove(): void {
+    localStorage.removeItem('token');
+  }
+
+  isLoggedIn(): boolean {
+    // Check if user is logged in by verifying if a token is present
+    const token = localStorage.getItem('token'); // Assuming you store the token in localStorage
+    return !!token;
   }
 }

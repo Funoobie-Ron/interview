@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,private commonService: CommonService) {}
 
   ngOnInit() {
+    this.commonService.remove();
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -42,6 +43,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.commonService.login(this.loginForm.value).subscribe(res=>{
         console.log(res)
+        this.commonService.setToken(res.token);
+        this.router.navigate(['/dashboard'])
       });
     }
   }
