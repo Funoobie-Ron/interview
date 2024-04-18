@@ -1,0 +1,14 @@
+.mat-toolbar {
+  top: 0;
+  z-index: 2; /* Ensure toolbar appears above content */
+}
+
+.content {
+  margin-top: 64px; /* Adjust margin to account for toolbar height */
+  padding: 20px;
+}
+
+.user-details-card {
+  max-width: 50%;
+  margin: auto;
+}
