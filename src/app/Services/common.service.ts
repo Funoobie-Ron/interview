@@ -35,6 +35,21 @@ export class CommonService {
 
   // Function to perform HTTP GET request to fetch all users
   getAllUsers(): Observable<any> {
+    console.log('current');
+
+    // Retrieve the token from wherever it's stored (e.g., localStorage)
+    const token = localStorage.getItem('token');
+
+    // Ensure token exists
+    if (!token) {
+      // Handle case where token is missing (e.g., redirect to login)
+      return throwError('Token is missing');
+    }
+
+    // Construct request headers with the token
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
     return this.http.get<any>(`${this.baseUrl}api/users`)
       .pipe(
         catchError(this.handleError)
