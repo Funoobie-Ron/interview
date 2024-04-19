@@ -24,6 +24,7 @@ userDetails:any;
     console.log("hello")
     this.CommonService.currentuser().subscribe(res=>{
       console.log(res)
+      this.userDetails=res;
     })
   }
 

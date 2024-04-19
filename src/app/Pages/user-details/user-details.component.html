@@ -11,19 +11,19 @@
         <mat-list>
           <mat-list-item>
             <mat-icon mat-list-icon>person</mat-icon>
-            <h3 mat-line>Name: John Doe</h3>
+            <h3 mat-line>Name: {{userDetails.name}}</h3>
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon>location_on</mat-icon>
-            <h3 mat-line>Address: 123 Main St, City, Country</h3>
+            <h3 mat-line>Address: {{userDetails.address}}</h3>
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon>assignment_ind</mat-icon>
-            <h3 mat-line>Username: johndoe</h3>
+            <h3 mat-line>Username: {{userDetails.username}}</h3>
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon>badge</mat-icon>
-            <h3 mat-line>Role: User</h3>
+            <h3 mat-line>Role: {{userDetails.role}}</h3>
           </mat-list-item>
         </mat-list>
       </mat-card-content>

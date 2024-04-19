@@ -20,7 +20,7 @@ exports.login = async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ id: user._id }, config.jwtSecret, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user._id }, config.jwtSecret);
 
     res.status(200).json({ token });
   } catch (error) {
@@ -59,3 +59,5 @@ exports.register = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
+

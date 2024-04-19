@@ -14,7 +14,7 @@ export class CommonService {
   // Function to handle errors
   private handleError(error: any) {
     console.error('API Error:', error);
-    return throwError('An error occurred. Please try again later.');
+    return throwError(error);
   }
 
   // Function to perform HTTP POST request for login
@@ -59,7 +59,7 @@ export class CommonService {
     });
 
     // Make the HTTP request with the token included in the headers
-    return this.http.get<any>(`${this.baseUrl}/api/currentuser`, { headers })
+    return this.http.get<any>(`${this.baseUrl}/api/users/currentuser`, { headers })
       .pipe(
         catchError(this.handleError)
       );

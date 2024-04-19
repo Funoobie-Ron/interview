@@ -2,7 +2,7 @@
   <mat-tab label="User Details">
    <app-user-details></app-user-details>
   </mat-tab>
-  <mat-tab label="User List">
+  <mat-tab label="User List" *ngIf="isAdmin">
    <app-user-listing></app-user-listing>
   </mat-tab>
 </mat-tab-group>

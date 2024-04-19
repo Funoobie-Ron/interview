@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
@@ -20,7 +21,7 @@ import { CommonService } from 'src/app/Services/common.service';
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
 
-  constructor(private commonService: CommonService) {}
+  constructor(private commonService: CommonService, private router: Router) {}
 
   ngOnInit() {
     this.registrationForm = new FormGroup({
@@ -39,7 +40,9 @@ export class RegistrationComponent implements OnInit {
       const username = this.registrationForm.value.username;
       const role = this.registrationForm.value.role;
       this.commonService.register(this.registrationForm.value).subscribe(res=>{
-        console.log(res)
+         if(res){
+          this.router.navigate(['/login'])
+         }
       }
       );
     }

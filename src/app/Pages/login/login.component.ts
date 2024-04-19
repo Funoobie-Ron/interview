@@ -45,7 +45,12 @@ export class LoginComponent implements OnInit {
         console.log(res)
         this.commonService.setToken(res.token);
         this.router.navigate(['/dashboard'])
-      });
+      },
+      err=> {
+        console.log(err)
+        alert(err.error.message)
+      }
+    );
     }
   }
 }

@@ -16,22 +16,6 @@ app.use(cors());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-app.use
-// Route to get current user
-app.get('/api/currentuser', authMiddleware.authenticate, async (req, res) => {
-  try {
-    console.log('Connected');
-    // Assuming you have a User model with a findById method
-    const user = await User.findById(req.user.id);
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-    res.status(200).json(user);
-  } catch (error) {
-    console.error('Error fetching user:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
 
 // Database connection
 mongoose.connect(config.dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
