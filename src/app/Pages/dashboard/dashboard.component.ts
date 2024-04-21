@@ -4,6 +4,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { UserListingComponent } from '../user-listing/user-listing.component';
 import { UserDetailsComponent } from '../user-details/user-details.component';
 import { CommonService } from 'src/app/Services/common.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -15,7 +16,7 @@ import { CommonService } from 'src/app/Services/common.service';
 export class DashboardComponent implements OnInit {
   isAdmin: boolean;
 
-    constructor(private CommonService:CommonService){
+    constructor(private CommonService:CommonService, private router: Router){
 
     }
 
@@ -28,6 +29,10 @@ export class DashboardComponent implements OnInit {
         this.isAdmin =false;
        }
       })
+    }
+
+    logout(){
+      this.router.navigate(['/login'])
     }
 
   }

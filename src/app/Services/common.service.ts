@@ -50,7 +50,7 @@ export class CommonService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<any>(`${this.baseUrl}api/users`)
+    return this.http.get<any>(`${this.baseUrl}/api/users/list`, { headers })
       .pipe(
         catchError(this.handleError)
       );

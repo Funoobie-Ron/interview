@@ -20,11 +20,7 @@ export interface User {
 })
 export class UserListingComponent implements OnInit {
   displayedColumns: string[] = ['name', 'address', 'username', 'role'];
-  users: User[] = [
-    { name: 'John Doe', address: '123 Main St, City, Country', username: 'johndoe', role: 'User' },
-    { name: 'Jane Smith', address: '456 Elm St, City, Country', username: 'janesmith', role: 'Admin' },
-    // Add more users as needed
-  ];
+  users: User[] = [];
 
   constructor(private CommonService:CommonService){
 
@@ -34,7 +30,7 @@ export class UserListingComponent implements OnInit {
     console.log("hello listing")
     this.CommonService.getAllUsers().subscribe(res=>{
       console.log(res)
-      //this.users=res;
+      this.users=res;
     })
   }
 }

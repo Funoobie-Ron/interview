@@ -21,3 +21,24 @@
   --mat-tab-header-active-focus-indicator-color: #c2185b;
   --mat-tab-header-active-hover-indicator-color: #c2185b;
 }
+
+.logout-button {
+  /* Your styles for the logout button */
+  background-color: #c2185b;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+.logout-button:hover {
+  /* Hover styles for the logout button */
+  background-color: #a40e4f;
+}
+
+.logout-button:active {
+  /* Active (clicked) styles for the logout button */
+  background-color: #910b45;
+}
